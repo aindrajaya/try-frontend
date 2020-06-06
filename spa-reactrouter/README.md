@@ -1,3 +1,5 @@
 ## This is the project that use React and React Router to build a Single Page Application
 
-<img src="https://github.com/aindrajaya/recipe-ui/blob/master/images/spa.gif" />
+<blockquote class="imgur-embed-pub" lang="en" data-id="CuCxxpv"><a href="//imgur.com/CuCxxpv"></a></blockquote>
+========
+<img src="https://i.imgur.com/CuCxxpv.gif" />
