@@ -1,0 +1,78 @@
+01. JAVASCRIPT DRUM KIT CHINESE GUIDE
+-------------------------------
+Author: © No branches
+Description: JavaScript30 is Wes Bos launched a 30-day challenge. The project provides 30 video tutorials, 30 challenge start documents and 30 challenge solution source codes for free. The purpose is to help people write things in pure JavaScript, without the help of frameworks and libraries, and without the use of compilers and references. Now you see the first part of this series of guides. The complete guide is on GitHub , please like Star ? (^?^*)
+
+#Achieve Effect
+Simulate a drumming page. When the user presses the ASDFGHJKL keys on the keyboard, the buttons corresponding to the letters on the page become larger and brighter, and the corresponding drum sound sounds.
+
+#Key Points
+1. Keyboard events
+2. Play Sound
+3. Change Style
+
+#Step Decomposition
+1. Add keyboard event monitoring. Adding keyboard on the window keydown event
+2. Corresponding event handler
+-->i. Get the key code
+->ii. With the querySelector acquisition element
+>iii. Obtaining data-key and element corresponding the key code
+->iv. Processing elements. Play audio, add style.
+3. For all div.key add transitioned events
+-->i. Get all stylse for key elements
+->ii. Add event listeners for it
+4. Remove style event handler
+
+#Basic Grammer
+--> Some ES6 Syntax
+1. const: Declare a read-only constant, the value of the identifier can only be assigned once.
+2. `String ${variable, attribute name}`: Template literals (Template literals) used to indicate the identification of the template string. It is characterized by back quotes (`) at the beginning and end of the string, and the internal template part is enclosed by ${}. A simple examples is as follows"
+[ 
+var a = 1;
+var b = 2;
+//The wording
+console is not used. log("Three is" + (a+b) + "Not" + (2*a+b)); //"Three is 3 Not 4"
+console.log(`Thre is $(a+b) is not $(2*a+b)`); //"Three is 3 is not 4"
+]
+--> forEach Function with arrow
+Use document.querySelector get in line with a set of CSS elements selected snapshot breaks, type NodeList (this object is the dynamic run-time query docuemnt for), it can be used when traversing forEact approact.
+[
+//code from http://es6-features.org/#StatementtBodies
+//ES6
+nums.forEach(v => {
+  if(v % 5 === 0)
+    fiver.push(v)
+})
+
+//ES5
+nums.forEach(function(v){
+  if(v % 5 === 0)
+    five.push(v);
+})
+]
+
+#Solve difficulties
+--> How to map keyboard keys to page buttons?
+Is connected helper keydown event keyCode attribute keyCode the same value and ASCII coded value (corresponding lower case letters). On this link (http://keycode.info/), you can use the keyboard to view the corresponding key code.
+We can get the initial page, the button div and the audio audio label has ben added to a property data-key key code is used to store correspondence, the purpose of this is, after adding the keyboard event listener, you can get the keyboard events trigger event keyCode attribute values Use this as a clue to operate the corresponding buttons and audio.
+[
+const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+const key = document.querySelector(`div[data-key="${e.keyCode}]`);
+]
+--> How to ensure that when the button is pressed and held, a continous drum beep sounds immediately?
+Before audio every time, set the playback timestamp to 0:
+[
+var audio = document.getElementById("video");
+audio.currentTime = 0;
+audio.play();
+]
+--> How to restore the page button?
+Use a named transitioned event, it will be triggered after the CSS transition. We can use this event to remove the corresponding style after each drumming effect (larger, size, color change) is completed. In this page, the occurence of transition the style attribute more than one (box-shadow, transform, border-color), you need to add a statement to judge, so that each time a key event occurs, remove only on style.
+[
+function remove(event){
+  if(event.propertyName !== 'border-left-color') return;
+  this.classList.remove('playing');
+  //event.target.classList.remove('playing');
+}
+]
+
