@@ -1,6 +1,6 @@
 01. JAVASCRIPT DRUM KIT CHINESE GUIDE
 -------------------------------
-Author: © No branches
+Author: ï¿½ No branches
 Description: JavaScript30 is Wes Bos launched a 30-day challenge. The project provides 30 video tutorials, 30 challenge start documents and 30 challenge solution source codes for free. The purpose is to help people write things in pure JavaScript, without the help of frameworks and libraries, and without the use of compilers and references. Now you see the first part of this series of guides. The complete guide is on GitHub , please like Star ? (^?^*)
 
 #Achieve Effect

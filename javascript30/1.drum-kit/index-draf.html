@@ -46,70 +46,70 @@
         </div>
     </div>
 
-    <audio data-key="65" src="/sounds/1clap.wav"></audio>
-    <audio data-key="83" src="/sounds/2hihat.wav"></audio>
-    <audio data-key="68" src="/sounds/3kick.wav"></audio>
-    <audio data-key="70" src="/sounds/4openhat.wav"></audio>
-    <audio data-key="71" src="/sounds/5boom.wav"></audio>
-    <audio data-key="72" src="/sounds/6ride.wav"></audio>
-    <audio data-key="74" src="/sounds/7snare.wav"></audio>
-    <audio data-key="75" src="/sounds/8tom.wav"></audio>
-    <audio data-key="76" src="/sounds/9tink.wav"></audio>
+    <audio data-key="65" src="./sounds/clap.wav"></audio>
+    <audio data-key="83" src="./sounds/2hihat.wav"></audio>
+    <audio data-key="68" src="./sounds/3kick.wav"></audio>
+    <audio data-key="70" src="./sounds/4openhat.wav"></audio>
+    <audio data-key="71" src="./sounds/5boom.wav"></audio>
+    <audio data-key="72" src="./sounds/6ride.wav"></audio>
+    <audio data-key="74" src="./sounds/7snare.wav"></audio>
+    <audio data-key="75" src="./sounds/8tom.wav"></audio>
+    <audio data-key="76" src="./sounds/9tink.wav"></audio>
 
     <script>
         function playAudio(e){
             const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
-            const key = document.querySelector(`div[data-key="${e.keyCode}"]`);
-
-            if(!audio) return;
+            const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
+            if(!audio) return; //stop the function from running all together
             audio.currentTime = 0;
             audio.play();
             key.classList.add('playing');
         }
-
+    
         function removeTransition(e){
-            if(e.propertyName !== 'border-left-colorr') return;
+            if(e.propertyName !== 'border-left-color') return;
             this.classList.remove('playing');
         }
-
+    
         const keys = document.querySelectorAll('.key');
         keys.forEach(key => key.addEventListener('transitioned', removeTransition));
         window.addEventListener('keydown', playAudio);
     </script>
-
+    
     <script type="text/javascript">
         'use strict';
-
+    
         function playSound(event){
             const keyCode = event.key;
-
+    
             if(keyCode === '76'){
                 alert('76');
             }else{
                 alert('false');
             }
         }
-
+    
         window.addEventListener('keydown', function(e){
             const audio = document.querySelector(`audio[data-key=${e.keyCode}"]`);
-            const key = document.querySelector(`div[data-key=${e.keyCode}"]`);
-            console.log(video);
+            const key = document.querySelector(`key[data-key=${e.keyCode}"]`);
+            console.log(audio);
             console.log(key);
-            if(!audio) return;
+            if(!audio) return; 
             audio.currentTime = 0;
             audio.play();
             key.classList.add('playing');
             //key.classList.remove("playing");
         }, false);
-
+    
         function removeTransition(e){
             //if(e.propertyName !== "border-left-color") return;
             console.log(e.propertyName);
             //e.target.classList.remove("playing");
         }
-
+    
         keys.forEach(keyin = keyin.addEventListener('transitioned', removeTransition));
     </script>
+
     
 </body>
 </html>
