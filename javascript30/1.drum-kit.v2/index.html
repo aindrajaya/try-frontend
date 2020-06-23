@@ -1,0 +1,128 @@
+<!-- Do the HTML -->
+
+<!-- Interface
+step 1. Seting up element div and add Class on it according from the chalenges 
+step 2. Define the class and find the keys based on keyboard (A= 65, S = 83, etc...)
+step 3. Add the audio file to the HTML
+step 4. in the css file
+
+Logic/function
+step 5. Create the Javascript function to make actions when the user opens the page and presses the key that corresponds with one of our div elemtns, and it should play the audio that associated with the keypress (explanation on the code) -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Drum Kit</title>
+</head>
+
+<body>
+    <!-- The div element for button keypress -->
+    <div class="keys"> 
+        <!-- the specific button keypress -->
+        <div data-key="65" class="key">
+            <!-- defining the keyboard letter (A) class-->
+            <kboard>A</kboard>
+            <!-- defining the sound class(clapp) -->
+            <span class="sound">clap</span>
+        </div>
+
+        <!-- Button S for hihat sound -->
+        <div data-key="83" class="key">
+            <kboard>S</kboard>
+            <span class="sound">hihat</span>
+        </div>
+
+        <!-- Button D for kick sound -->
+        <div data-key="68" class="key">
+            <kboard>D</kboard>
+            <span class="sound">kick</span>
+        </div>
+
+        <!-- Button F for openhat sound -->
+        <div data-key="70" class="key">
+            <kboard>F</kboard>
+            <span class="sound">openhat</span>
+        </div>
+        
+        <!-- Button G for boom sound -->
+        <div data-key="71" class="key">
+            <kboard>G</kboard>
+            <span class="sound">boom</span>
+        </div>
+
+        <div data-key="72" class="key">
+            <kboard>H</kboard>
+            <span class="sound">ride</span>
+        </div>
+
+        <!-- Button J for snare sound -->
+        <div data-key="74" class="key">
+            <kboard>J</kboard>
+            <span class="sound">snare</span>
+        </div>
+
+        <!-- Button K for tom sound -->
+        <div data-key="75" class="key">
+            <kboard>K</kboard>
+            <span class="sound">tom</span>
+        </div>
+
+        <!-- Button L for tink sound -->
+        <div data-key="76" class="key">
+            <kboard>L</kboard>
+            <span class="sound">tink</span>
+        </div>
+    </div>
+
+    <!-- This is the audio section that define linkages of data-key and audio -->
+    <audio data-key="65" src="sounds/1clap.wav"></audio>
+    <audio data-key="83" src="sounds/2hihat.wav"></audio>
+    <audio data-key="68" src="sounds/3kick.wav"></audio>
+    <audio data-key="70" src="sounds/4openhat.wav"></audio>
+    <audio data-key="71" src="sounds/5boom.wav"></audio>
+    <audio data-key="72" src="sounds/6ride.wav"></audio>
+    <audio data-key="74" src="sounds/7snare.wav"></audio>
+    <audio data-key="75" src="sounds/8tom.wav"></audio>
+    <audio data-key="76" src="sounds/9tink.wav"></audio>
+
+    <!-- This is the javascript section that make when the user press the key the application should make a sound based on the sound library -->
+    <script>
+        (() => {
+            const playSound = (e) => {
+                const sondclip = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+                const keyelement = document.querySelector(`.key[data-key="${e.keyCode}"]`);
+
+                if(!soundclip) return undefined; //stop function from running if the key presed doesn't match up with our elements
+
+                keyelement.classList.add('playing');
+
+                //ensures the the sond clip always plays from the beginning. Otherwise, if the 'a' key is pressed twice rapidly, the soundclip only play through once.
+                soundclip.currentTime = 0;
+                soundclip.play(); //play sound
+            }
+
+            const removeTransition = (e) => {
+                //skip if it's not a transform event
+                if(e.propertyName !== 'transform') return undefined;
+                e.target.classList.remove('playing');
+            }
+
+            //find all elements in the document wit a clss 'key'
+            const keys = document.querySelectorAll('.key');
+            
+            //Listen for any `keydown` events that occur on this browser window instance (this page). When a `keydown` event is observed, trigger the `playSound` function, passing in the `keydown` event as the argument (e)
+            window.addEventListener('keydown', playSound);
+
+            keys.forEach(key => 
+                key.addEventListener(
+                    'transitioned',
+                    (e) => removeTransition.call(key, e)
+                ));
+        })();
+    </script>
+</body>
+</html>
