@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scoped CSS Variables and JS</title>
+    <style>
+        :root{
+            --base: goldenrod;
+            --blur:10px;
+            --padding: 10px;
+        }
+
+        img{
+            box-sizing:border-box;
+            background: var(--base);
+            filter:blur(var(--blur));
+            padding: var(--padding);
+            border-radius: 2rem;
+        }
+
+        .h1{
+            color: var(--base);
+        }
+
+        body{
+            text-align: center;
+        }
+
+        body{
+            background: #193549;
+            color: white;
+            font-family: 'helvetica neue', sans-serif;
+            font-weight: 100;
+            font-size: 50px;
+        }
+
+        .controls{
+            margin-bottom: 50px;
+        }
+
+        input{
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Update CSS Variable with <span class="h1">JS</span></h2>
+
+    <div class="controls">
+        <label for="padding">Padding:</label>
+        <input type="range" name="padding" min="10" max="200" value="10" data-sizing="px">
+
+        <label for="blur">Blur:</label>
+        <input type="range" name="blur" min="0" max="25" value="10" data-sizing="px">
+
+        <label for="base">Base Color</label>
+        <input type="color" name="base" value="#ffc600">
+    </div>
+
+    <img src="https://source.unsplash.com/800x500">
+
+    <script>
+        (() =>{
+            'use-strict';
+            const inputs = document.querySelectorAll('.controls input');
+
+            const handleUpdate = ({target: {name, value, dataset:{sizing: suffix = ''}}}) =>{
+                document.documentElement.style.setProperty(`--${name}`, value + suffix)
+            }
+
+            const listen = (event, element, handler, cb = false, add = true)=>(
+                add ?
+                    cb ?
+                        () => element.addEventListener(event, handler) :
+                        element.addEventListener(event, handler) :
+                    cb ?
+                        () => element.removeEventListener(event, handler) :
+                        element.addEventListener(event, handler)
+            );
+
+            inputs.forEach(inp => {
+                listen('change', inp, handleUpdate)
+                listen('mousedown', inp, listen('mousemove', inp, handleUpdate, true))
+                listen('mouseup', inp, listen('mousemove', inp, handleUpdate, true, false))
+            });
+        })();
+    </script>
+</body>
+</html>
