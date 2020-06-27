@@ -1,0 +1,26 @@
+{
+  "name": "tailwind-plain",
+  "version": "1.0.0",
+  "description": "",
+  "main": "postcss.config.js",
+  "scripts": {
+    "build": "postcss css/tailwind.css -o public/build/tailwind.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aindrajaya/tailwind-try.git"
+  },
+  "keywords": [],
+  "dependencies": {
+    "autoprefixer": "^9.8.4",
+    "live-server": "^1.2.1",
+    "postcss-cli": "^7.1.1",
+    "tailwindcss": "^1.4.6"
+  },
+  "devDependencies": {},
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aindrajaya/tailwind-try#readme"
+  }
+}
