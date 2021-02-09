@@ -1,0 +1,146 @@
+PURE REACT TRY PRACTICE
+-----------
+1. INTRODUCTION
+Ada permasalahan dengan pengembangan frontend sekarang ini, yaitu sangat banyak referensi. Ada ribuan library/modul di luar sana, setiapnya melakukan satu hal kecil masing-masing.  Groups of them evolve to become de facto standards, but with no actual standards in sight. The React ecosystem is especially guilty of this: there’s React, Redux, Webpack, Babel, React Router, and on and on. Hundreds of boilerplate projects exist to make this “easier” by bundling a bunch of choices together. “It’ll be easier to learn,” the thinking goes, “if you don’t have to make all the choices yourself.”. Instead, the opposite happens: rather than being overwhelmed by the choices, you’re now overwhelmed by the sheer amount of code that came “for free” with the boilerplate, and you have NO IDEA what any of it actually does. That’s a scary place to be. Learning everything at once is massively overwhelming. So in this book, we will take a different
+approach. A more sane approach. We will learn Pure React.
+[ Pure React: The core concept of React, in isolation, without REdux, Webpack and the rest. ]
+When you achieve what’s contained here – when you learn Reactcold, you’ll be able to go on and learn all of its friends with ease: Redux, Router, and the rest. Not only will you be able to learn those other libraries, but you will be well-equipped. You’ll have a solid foundation. This book has been designed to get you from zero to React quickly, and with maximum understanding. What you won’t be doing here is what plays out in many tutorials across on the web, where you copy and paste each block of code until you have a working app at the end. “Voila!” they say. “Now you
+know React and Redux and Webpack!”
+You might learn one or two concepts with that approach, but it’s a shaky foundation. Inevitably, when you sit down to write your own app, everything you “learned” instantly vanishes, leaving you staring at a blinking cursor wondering what that first line of code should be. You can only get so far by copying and pasting. And you know this already, otherwise you wouldn’t be here. So in this book we’ll follow a different approach: I’ll show you a concept, with some example code.
+Then (and this is the important part) you will use that concept in the exercises that follow, until it’s second nature. Rinse and repeat until we’ve covered all the core pieces of pure React – and there
+aren’t too many. 
+What We’ll Cover
+We will start where most programming books stare, with HEllo World- just getting a few words on the screen. From there, we'll look at how to compose components together and how to work with JSX, React's HTML-like syntax for rendering elements to the page. Once you have grasp on how to create static components, you'll learn about "props'" as a way to pass in the data they need, and "propTypes" for documenting and degugging the props that a component requires.
+We'll cover React's special "children" prop, which is a powerful tool for building reusable componnets. You'll learn about "state", how it differs from props, and how to organize it in an application- bot with the old standby, classes, and the fund new Hooks. We'll touch on how to make API requests with React  (because even though it’s not a “React thing”,
+most apps need to do it at some point!), and how to work with form inputs. You’ll also learn how to use more advanced features of React: the useReducer hook, the useEffect hook, and the Context API.
+#Why Just React?
+Without a solid understanding of React, learning libraries and tools like Redux and Webpack will only slow down your learning process. It’s very tempting to dive in and learn it all at once, especially if you have a fun project in mind (or a deadline to meet).
+However, learning everything at once will be slower in the long run. Think of these libraries and tools as layers in a foundation. If you were building a house, would you skip some steps to get it done faster? Say, start pouring the concrete before laying some rocks down? Start building the walls on bare earth? 
+Or how about making a wedding cake: the top part looks the most fun to decorate, so why not start there? Just figure out the bottom part later!
+No?
+Of course not. You know those things would lead to failure. They would, perhaps counterintuitively, slow things down rather than speed them up.
+So does it make sense to learn React in tandem with ancillary tools like Webpack + Babel + Redux + Routing + AJAX all at once? Doesn’t that sound like a ton of overwhelming confusion? Instead, the most efficient approach is to learn these one at a time. This book will teach you how to use React, and then you’ll be ready to tackle the next piece of the puzzle.
+-----------
+#How THis BOok Works
+-> How Much Time Will This Take?
+The basic concepts of React can be learned in a matter of days. This book covers those basics and also contains exercises after each major concept to reinforce your understanding. The basic concepts of React can be learned in a matter of days. This book covers those basics and also contains exercises after each major concept to reinforce your understanding. The theme behind the whole process is this: avoid getting overwhelmed. Quitting won’t get you
+anywhere. Slow and steady, uh, learns the React.
+-> Build Small Things and Throw Them Away
+This is the awkward middle step that a lot of people skip. Moving on to Redux and other libraries without having a firm grasp of React’s concepts will lead straight back to overwhelmsville. But this step isn’t very well-defined: what should you build? A prototype for work? Maybe a fancy
+Facebook clone, something substantial that uses the whole stack?
+Well, no, not those things. They’re either loaded with baggage or too large for a learning project. You want to build small things.
+-> Don’t Build a Prototype
+"Prototypes” (for work) are usually terrible learning projects, because you know in your heart that a “prototype” will never die. It will live long beyond the prototype phase, morph into shipping software, and never be thrown away or rewritten. As soon as some manager sees that it works, features will be piled on. “We’ll refactor it some day” will turn out to be a lie. The code will grow bloated and disorganized.
+All of these, and more, are reasons why a prototype is a bad choice as a learning project.
+When you know it won’t be throwaway code, the future looms large. You start to worry… Shouldn’t it have tests? Shouldn’t I make sure the architecture will scale? Am I going to have to refactor this mess later? And shouldn’t it have tests?. Worrying about architecture and scalability and “the future” is a bad strategy for learning the basicsof a new technology. 
+On the flip side, if you build a prototype believing that it is throwaway code, it probably won’t be very good code. Then when your boss’ boss sees how awesome the prototype looks, they will absolutely not allow you to rewrite it with all the best practices you’ve learned. And that’s a recipe for an unmaintainable code base.
+-> So What Should You Build?
+This book exists to answer this question, and help you through it. The short answer is this:
+[ Build small, throwaway apps. ]
+The sweet spot is somewhere between “Hello World” and “entire clone of Twitter.”  We’ll start off with Hello World, of course. No self-respecting programming book would be complete without that. As your skills grow, low-fidelity copies of simple apps and sites like Reddit, Hacker News, and Slack
+make great projects. Designers call this “copywork,” and it’s great because it frees you from having to make product decisions like “what page the user should see after they log in” or “what color should the buttons be.” You can simply focus on learning React. By the end of this book you’ll be building replicas of those popular apps and more. They’ll come together quickly once you can clearly “think in components,” a skill you’ll develop as you progress through the book.
+-> Learning With Small Projects
+I believe that you can get more learning value out of small projects than large or full-stack ones, at least in the beginning. Here’s an idea of what I mean. The colored bars are periods of maximum learning, and the gaps are where you’re doing things you already know how to do:
+At some point, the larger projects have diminishing returns. The first few times you use a text input and have to wire it up to maintain its state, you’re learning. By the tenth time, it’s old hat. That isn’t to say that large projects aren’t valuable, but I don’t believe they’re good first projects. Start small, build a few small things, then build a bigger thing or two. This is the idea behind deliberate practice – the activity should be just beyond your current skill level. Not so hard that you get frustrated and quit, but not so easy that you can breeze right through, either. The exercises in this book are designed around that idea, to push you a little outside your comfort zone and make you think.
+
+2. HELLO WORLD
+#How the Code WOrks
+Let's start at the bottom, with the call to ReactDOM.render. That's what actually makes this work. This bit of code is reqular Javascript, despite the HTML-looking <HelloWorld/> thing there. Try commenting out that line and watch how Hello WOrld disappears. React uses the conecpt of a virtual DOM. It creates a representation of your component hierarchy and then renders those components by creating real DOM elements and inserting them where you tell it. In this case, hat's inside the element with and id of root. ReactDOM.render tak 2 arguments: what you want to render (your component, or any other React element) and where you want to render it into (a real DOM element that already exists).
+[ ReactDOM.render([React Element], [DOM element]); ]
+Above that, we have component named HElloWorld. The primary way of writing React components is as plain functions like this. Most people call them "function compoennts", but you might see them called "functional components" or "stateless functions components". There are 2 other ways to create components: ES6 classes, and the now-deprecated React.createClass.
+You may still see the createClass style in old projects or Stack Overflow answers, but it’s not in common use anymore. Primarily we’ll be writing components as functions. The HTML-like syntax inside the render function is called JSX, and we’ll cover that next.
+
+3. JSX: WHAT AND WHY
+One of the first things you probably noticed about React code is that it looks like the component function is returning HTML. This HTML-like syntax is actually called JSX.
+-> What Is JSX?
+JSX is a syntax invented for React that looks very similar to (X)HTML. It allows you to create elements by writing in a familiar-looking syntax, instead of writing out function calls by hand. The HTML-like
+syntax actually compiles down to real JavaScript. Did you notice how there are no quotes around the “HTML”? That’s because it’s not a string. The lack of quotes is not just a trick, either. React is not parsing the tags and converting them into HTML. I know, I know, it looks like HTML. In reality though, JSX is just a nice syntax for function calls that create DOM elements. So what is React actually doing here? How does this work?
+-> JSX Is Compiled to JavaScript
+The JSX elements you write are actually compiled down to Javascript byh a tool called Babel. Babel is a compiler that transforms code into valid ES5 Javascript that all browsers can understand, and its bundled in with projects created by CRA. After you run npm start, a tool called Webpack is watching for files to change. When they do, it feeds those files into Babel, which turns JSX into JS, and sends to it to your browser via the development server running port on 3000. Each JSX element becomes a function call, where its arguments are its attributes ("props") and its contents ("children"). Here's an example of a simple React component that return some JSX:
+[function Hello(){
+  return <span>Hello!</span>
+}]
+And here is the Javascript generated by the Babel compiler:
+[funciton Hello(){
+  return React.createElement(
+    'span',
+    {},
+    'Hello!'
+  );
+}]
+The React.createElement funciton signature looks like this:
+[React.createElement(
+  string|element,
+  [propsObject],
+  [children...]
+)]
+The string|element can be a string describing an HTML or SVG tag (like 'div' or 'span'), or it can be a component a.k.a. function (like HelloWorld, with no quotes). The propsObject and children are optional, and you can also supply more than one child by passing
+additional arguments:
+[function HelloWorld(){
+return React.createElement(
+  'div',
+  {},
+  'Hello',
+  'World'
+  );
+}]
+You can also nest the calls:
+[function ManyChildren(){
+  return React.createElement('div', {}, 
+    React.createElement('div', {}, 'Child1'),
+    React.createElement('div', {}, 'Child2', 
+      React.createElement('div', {}, 'Child2_child')
+    )
+  )
+}]
+Try it yourself! Rewrite the HelloWorld component to call React.createElement instead of returning JSX.
+[function HelloWorld(){
+  return React.createElement(
+    /* fill this in */
+  )
+}]
+Here is a slightly more complicated bit of JSX, and a preview of what's to come. You can see that it references a function parameter named props. We haven't talked about props yet, but this is the way you pass arguments to React components. 
+[function SongName(props){
+  return(
+    <span className='song name'>
+      {props.song.name}
+    </span>
+  )
+}]
+And here is what it compiles to:
+[function SongName(props){
+  return(
+    React.createElement('span', 
+      {className: 'song-name'},
+      props.song.name
+    )
+  );
+}]
+See how JSX is essentially a nice shorthand for writing function calls? You don't even have to use JSX if you don't want to- you can write out these function calls manually. Your first instinct might be to avoid writing JSX because you don't like the look of "HTML in JS". Maybe you'd rather write real Javascript function calls, because it feels more "pure" somehow. I suggest giving JSX an honest try before you give up on it. Writing out the React.createElement calls is not a common approach in the React community. Essentially all React developers use JSX, which meacns code that you see in the wild (on Github, StackOverflow, etc) is likely be written with it.
+But... Separation of Concerns!
+If you've internalized the idea that mixing JS with HTML is just wrong, and that each language shold be kept in its own file, you're not alone. Before I got into using React, I had the apprehensions. It took some time (and writing a few small apps) before I began to understand the power of JSX. Don't worry though, because the exercises in this book will give you all the practice you need to come to grips with it. I believe the disdain for mixing HTML with JS has a bit of cargo-bult "tradition" behind it. It's a piece of lore passed down through the generations about the Right Way to build web apps. You might fear that mixing HTML with JS will turn the code base into a tangled mess of conditional logic with duplicated HTML everywhere, like badly-written PHP. If you have flashbacks to PHP or JSPs where SQL statements were mixed in with view code, and you never want to go back to that world, I don’t blame you. React’s pattern of building with components helps prevent this.
+->Unseparated Concerns
+When you step back and think about it, there are some good reasons to combine the logic and the view together. If you’ve ever used something like Angular 1.x, you’ve probably written the logic in one file and the HTML in a separate template file. Tell me, how often have you opened up the template to tweak something without having to look at
+(or change!) the associated JS code? How often have you changed the JS without having to touch the template?
+
+
+
+
+4. WORKING WITG JSX
+5. EXAMPLE: TWEET COMPONENT
+6. PROPS
+7. EXAMPLE: TWEET WITH PROPS
+8. PROPTYPES
+9. CHILDREN
+10. EXAMPLE: GITHUB FILE LIST
+11. STATE IN CLASSES
+12. THE COMPONENT LIFECYCLE
+13. API REQUESTS IN REACT
+14. STATE IN FUNCTIONS
+15. THINKING ABOUT STATE
+16. INPUT CONTROLS
+17. THE useReducer Hook
+18. THE useEffect Hook
+19. THE CONTEXT API
+20. EXAMPLE: SHOPPING SITE
+21. WHERE TO GO FROM HERE
