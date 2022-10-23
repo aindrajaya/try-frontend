@@ -1,0 +1,26 @@
+{
+  "name": "Arista Indrajaya",
+  "avatar": "/assets/avatar.png",
+  "links": [
+    {
+      "title": "My personal site",
+      "url": "https://aindrajaya.my.id",
+      "image": "https://images.unsplash.com/photo-1608889335681-943464862d95"
+    },
+    {
+      "title": "google",
+      "url": "https://google.com",
+      "image": "https://images.unsplash.com/photo-1624010488948-9af390baa9fd"
+    }
+  ],
+  "socials": [
+    {
+      "title": "Twitter",
+      "url": "https://twitter.com/aindrajayaa"
+    },
+    {
+      "title": "GitHub",
+      "url":"https://github.com/aindrajaya"
+    }
+  ]
+}
