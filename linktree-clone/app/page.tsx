@@ -40,13 +40,13 @@ export default function Home() {
       {data.links.map((link) => (
         <LinkCard key={link.url} {...link}/>
       ))}
-      <div className="flex items-center gap-4 mt-8">
+      <div className="flex items-center gap-4 mt-8 text-green-200">
         {data.socials.map((link) => {
           if(link.url.includes('twitter')){
-            return <TwitterIcon key="first" color={'#dcfce6 '}/>;
+            return <TwitterIcon key="first"/>;
           }
           if(link.url.includes('github')){
-            return <GitHubIcon key="second" color={'#dcfce6 '}/>
+            return <GitHubIcon key="second"/>
           }
         })}
       </div>
